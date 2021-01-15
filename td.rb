@@ -21,7 +21,7 @@ if ARGV.size > 1 and ARGV[1]
 
   when 'rm', 'remove', 'delete'
     if ARGV[1].numeric?
-      write_hash if remove_url(ARGV[1].to_i)
+      write_hash if remove_item(ARGV[1].to_i)
     end
 
   else
@@ -39,9 +39,9 @@ elsif ARGV.size == 1
 
   else
     if ARGV[0].numeric?
-      open_url_from_index(ARGV[0].to_i)
+      mark_complete(ARGV[0].to_i)
     else
-      search_and_open(ARGV[0])
+      search_and_mark_complete(ARGV[0])
     end
   end
 

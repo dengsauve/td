@@ -18,25 +18,7 @@ def search_hash(target)
 end
 
 
-def open_url(url)
-  system("open #{url}") if url
-end
-
-
-def search_and_open(target)
-  urls = @todo_hash['bookmarks'].select { |e| e["url"].include? target or e["tags"].include? target }
-  if urls.size > 0
-    open_url(urls[0]["url"])
-  end
-end
-
-
-def open_url_from_index(index)
-  open_url(@todo_hash['bookmarks'][index]["url"])
-end
-
-
-def remove_url(index)
+def remove_item(index)
   @todo_hash['items'].delete_at(index)
   true
 end
