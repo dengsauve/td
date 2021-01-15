@@ -39,9 +39,9 @@ elsif ARGV.size == 1
 
   else
     if ARGV[0].numeric?
-      mark_complete(ARGV[0].to_i)
+      write_hash if mark_done(ARGV[0].to_i)
     else
-      search_and_mark_complete(ARGV[0])
+      write_hash if search_and_mark_done(ARGV[0])
     end
   end
 

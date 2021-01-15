@@ -2,7 +2,7 @@ require 'terminal-table'
 
 
 def list_items
-  puts_items(@todo_hash['items'])
+  puts_items(@todo_hash['items'].reject{|e| e["done"] == true})
 end
 
 

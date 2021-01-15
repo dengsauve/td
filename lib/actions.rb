@@ -18,6 +18,25 @@ def search_hash(target)
 end
 
 
+def mark_done(index)
+  @todo_hash['items'][index]['done'] = true
+  @todo_hash['items'][index]['date'] = Time.new.strftime('%Y-%m-%d')
+  true
+end
+
+
+def search_and_mark_done(target)
+  @todo_hash['items'].each_with_index do |e, i|
+    if e["todo"].include? target or e["tags"].include? target
+      mark_done(i)
+      return true
+    end
+  end
+
+  false
+end
+
+
 def remove_item(index)
   @todo_hash['items'].delete_at(index)
   true
