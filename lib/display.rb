@@ -2,13 +2,15 @@ require 'terminal-table'
 
 
 def list_bookmarks
-  puts_bookmarks(@bookmark_hash['bookmarks'])
+  puts_bookmarks(@todo_hash['bookmarks'])
 end
 
 
 def puts_bookmarks(bookmarks)
   rows = []
-  bookmarks.each_with_index { |bookmark, index| rows << ["#{index.to_s.ljust(2)} #{bookmark["url"]}", bookmark["tags"].join(", ")] }
+  bookmarks.each_with_index do |bookmark, index|
+    rows << ["#{index.to_s.ljust(2)} #{bookmark["url"]}", bookmark["tags"].join(", ")]
+  end
   table = Terminal::Table.new :rows => rows,
                               :title => "bookmarks",
                               :style => {:width => get_console_width},
@@ -17,9 +19,9 @@ def puts_bookmarks(bookmarks)
 end
 
 
-def puts_indexed_bookmarks(bookmarks)
-  bookmarks.each do |bookmark|
-    puts "#{bookmark[0]}. #{bookmark[1]}"
+def puts_indexed_items(items)
+  items.each do |item|
+    puts "#{item[0]}. #{item[1]}"
   end
 end
 

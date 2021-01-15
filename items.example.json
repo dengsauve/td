@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "todo":"item x1",
+      "date": "",
+      "done": false,
+      "tags": ["google", "search"]
+    }
+  ],
+  "debug": false
+}

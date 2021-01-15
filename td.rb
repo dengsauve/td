@@ -4,17 +4,17 @@ require 'require_all'
 require_all("#{__dir__}/lib")
 
 @reserved_words = %w[add search ls list edit rm remove delete]
-@bookmark_hash = get_hash
-@debug = @bookmark_hash['debug']
+@todo_hash = get_hash
+@debug = @todo_hash['debug']
 
-puts "Retrieved bookmark hash: #{@bookmark_hash}" if @debug
+puts "Retrieved todo hash: #{@todo_hash}" if @debug
 puts "Arguments: #{ARGV.inspect}" if @debug
 
 
 if ARGV.size > 1 and ARGV[1]
   case ARGV[0]
   when 'add'
-    write_hash if add_url(ARGV[1], ARGV[2..-1])
+    write_hash if add_item(ARGV[1], ARGV[2..-1])
 
   when 'search'
     search_hash(ARGV[1])

@@ -1,7 +1,7 @@
 require 'json'
 
 def get_hash
-  path = "#{__dir__}/../bookmarks.json"
+  path = "#{__dir__}/../items.json"
   if File.exist?(path)
     file = File.read(path)
     puts "file: #{file}" if @debug
@@ -9,11 +9,13 @@ def get_hash
   end
 
   {
-      "bookmarks" => [],
-      "debug" => false
+      "todo" => [],
+      "date" => "",
+      "done" => false,
+      "tags" => []
   }
 end
 
 def write_hash
-  File.write("#{__dir__}/../bookmarks.json", JSON.dump(@bookmark_hash))
+  File.write("#{__dir__}/../items.json", JSON.dump(@todo_hash))
 end
