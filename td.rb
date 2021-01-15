@@ -32,7 +32,7 @@ elsif ARGV.size == 1
   case ARGV[0]
   when 'list', 'ls'
     dump_hash if @debug
-    list_bookmarks
+    list_items
 
   when 'help'
     puts_help
@@ -47,5 +47,5 @@ elsif ARGV.size == 1
 
 else
   puts_banner
-  list_bookmarks
+  list_items
 end

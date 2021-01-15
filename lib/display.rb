@@ -1,20 +1,20 @@
 require 'terminal-table'
 
 
-def list_bookmarks
-  puts_bookmarks(@todo_hash['bookmarks'])
+def list_items
+  puts_items(@todo_hash['items'])
 end
 
 
-def puts_bookmarks(bookmarks)
+def puts_items(items)
   rows = []
-  bookmarks.each_with_index do |bookmark, index|
-    rows << ["#{index.to_s.ljust(2)} #{bookmark["url"]}", bookmark["tags"].join(", ")]
+  items.each_with_index do |item, index|
+    rows << ["#{index.to_s.ljust(2)} #{item["todo"]}", item["tags"].join(", ")]
   end
   table = Terminal::Table.new :rows => rows,
-                              :title => "bookmarks",
+                              :title => "items",
                               :style => {:width => get_console_width},
-                              :headings => ['sites', 'tags']
+                              :headings => ['items', 'tags']
   puts table
 end
 

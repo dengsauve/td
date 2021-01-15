@@ -37,7 +37,7 @@ end
 
 
 def remove_url(index)
-  @todo_hash['bookmarks'].delete_at(index)
+  @todo_hash['items'].delete_at(index)
   true
 end
 
