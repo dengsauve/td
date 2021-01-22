@@ -1,8 +1,13 @@
 require 'terminal-table'
 
 
+def outstanding_items
+  @todo_hash['items'].reject{ |e| e['done'] == true}
+end
+
+
 def list_items
-  puts_items(@todo_hash['items'].reject{|e| e["done"] == true})
+  puts_items(outstanding_items)
 end
 
 

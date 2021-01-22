@@ -1,3 +1,8 @@
+def outstanding_items
+  @todo_hash['items'].reject{ |e| e['done'] == true}
+end
+
+
 def add_item(todo, todo_tags)
   puts "add_item todo_hash: #{@todo_hash['bookmarks'].inspect}" if @debug
   @todo_hash['items'] << {"todo": todo, "date": "", "done": false, "tags": todo_tags.to_a}
@@ -19,8 +24,9 @@ end
 
 
 def mark_done(index)
-  @todo_hash['items'][index]['done'] = true
-  @todo_hash['items'][index]['date'] = Time.new.strftime('%Y-%m-%d')
+  oi = outstanding_items
+  oi[index]['done'] = true
+  oi[index]['date'] = Time.new.strftime('%Y-%m-%d')
   true
 end
 
