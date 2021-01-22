@@ -34,8 +34,11 @@ elsif ARGV.size == 1
     dump_hash if @debug
     list_items
 
-  when 'help'
+  when 'help', 'h'
     puts_help
+
+  when 'history', 'p' # p for past?
+    puts_history
 
   else
     if ARGV[0].numeric?

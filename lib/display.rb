@@ -1,4 +1,5 @@
 require 'terminal-table'
+require 'json'
 
 
 def outstanding_items
@@ -51,5 +52,19 @@ def puts_banner
   banner_lines = open("#{__dir__}/../banner.txt").readlines
   banner_lines.each do |line|
     puts line.chomp.center(get_console_width)
+  end
+end
+
+
+def puts_history
+  history_array = @todo_hash['items'].sort_by{ |i| i['date']}.reverse.group_by{ |i| i['date']}
+
+  history_array.each do |date|
+    next if date[0] == ""
+    puts date[0]
+    date[1].each do |item|
+      puts "* #{item['todo']}"
+    end
+    puts "\n"
   end
 end
